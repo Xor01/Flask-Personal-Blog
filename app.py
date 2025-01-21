@@ -10,7 +10,9 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from flask_gravatar import Gravatar
 from os import getenv
+from dotenv import load_dotenv
 
+load_dotenv()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = getenv('SECRET_KEY')
 ckeditor = CKEditor(app)
@@ -21,7 +23,6 @@ login_manager.init_app(app=app)
 app.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-db['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URL')
 Gravatar(app,
          size=200,
          rating='g',
