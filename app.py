@@ -21,6 +21,7 @@ login_manager.init_app(app=app)
 app.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+db['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URL')
 Gravatar(app,
          size=200,
          rating='g',
